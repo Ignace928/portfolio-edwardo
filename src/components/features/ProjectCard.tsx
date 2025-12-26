@@ -39,21 +39,22 @@ export function ProjectCard({
         {/* Carousel */}
         <Carousel className="w-full">
             <CarouselContent>
-            {images.map((img, index) => (
-                <CarouselItem key={index}>
-                <div className="relative w-full aspect-[4/3] md:aspect-[16/9] lg:aspect-[16/9] overflow-hidden">
-                    <Image
-                    src={img}
-                    alt={title}
-                    fill
-                    className="object-cover"
-                    />
-                </div>
-                </CarouselItem>
-            ))}
+            {
+              images.map((img, index) => (
+                  <CarouselItem key={index}>
+                  <div className="relative w-full aspect-4/3 md:aspect-video lg:aspect-video overflow-hidden">
+                      <Image
+                      src={img}
+                      alt={title}
+                      fill
+                      className="object-cover"
+                      />
+                  </div>
+                  </CarouselItem>
+              ))
+            }
             </CarouselContent>
-
-            <CarouselPrevious className="left-2" />
+            <CarouselPrevious className="left-2 primary" />
             <CarouselNext className="right-2" />
         </Carousel>
 

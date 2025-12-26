@@ -2,7 +2,7 @@
 "use client"
 
 import { useRef } from "react";
-import { animate, AnimatePresence, motion, useInView, useScroll, useTransform } from 'framer-motion'
+import { AnimatePresence, motion, useScroll, useTransform } from 'framer-motion'
 import AnimatedProfile from "./AnimatedProfile";
 import { Card, CardContent, CardTitle } from "../ui/card";
 import ThemeSwitcher from "./themeSwitcher";
@@ -14,10 +14,13 @@ import { skill } from "@/lib/me";
 import { SuperMarquee } from "./CoolMarquee";
 import { ProjectCard } from "./ProjectCard";
 import { GradualSpacing } from "./GradualSpacing";
-import { notoSans } from "@/app/page";
+import { notoSans, writer } from "@/app/page";
 import { TypingNoStep } from "./Typing";
 import { CalendarDaysIcon } from "lucide-react";
 import { LettersPullUp } from "./LetterPullup";
+import { ContactMe } from "./ContactMe";
+import { SendButton } from "./SendMotion";
+import { DropdownMenuSeparator } from "../ui/dropdown-menu";
 
 export default function ContainerClient() {
     const scrollRef = useRef<HTMLDivElement>(null);
@@ -43,7 +46,7 @@ export default function ContainerClient() {
 
             <motion.section 
                 style={{opacity}} 
-                className="border backdrop-blur-xl rounded-md m-6 items-center text-center sticky top-0"
+                className="border backdrop-blur-xl rounded-md m-2 sm:m-6 items-center text-center sticky top-0"
             >
                 <div className="flex justify-between">
                     <div className='w-2 h-2 rounded-full bg-primary relative mt-3 ml-2'></div>
@@ -76,7 +79,7 @@ export default function ContainerClient() {
                 className="min-h-screen mx-auto bg-card/0 border-0 flex items-center justify-center flex-col"
                 id="parcours"
             >
-                <CardTitle className="sticky top-22 bg-card py-10 w-full z-3">
+                <CardTitle className="sticky top-21 bg-card py-2 w-full h-auto z-3">
                     <LettersPullUp text="Formations & diplôme"/>
                 </CardTitle>
                 
@@ -110,17 +113,14 @@ export default function ContainerClient() {
                 
             </Card>
 
-            <SuperMarquee>
-                {
-                    skill.map((myStack) => {
-                        return <MyStackCard key={myStack.tech} stack={myStack}/>
-                    })
-                }
-            </SuperMarquee>
             <section
-                className="min-h-screen bg-linear-to-b from-blue-500 to-indigo-500 flex flex-col items-center justify-center"
+                className="min-h-screen flex flex-col gap-6 items-center justify-center pt-10"
                 id="experience"
             >
+                <CardTitle className="sticky top-21 bg-card py-2 w-full h-auto z-3">
+                    <LettersPullUp text="Expériences "/>
+                </CardTitle>
+                
                 <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-6">
                     {projets.map((project, index) => (
                         <ProjectCard
@@ -131,25 +131,40 @@ export default function ContainerClient() {
                         />
                     ))}
                 </div>
-            </section>
-            <section className=" flex m-4 p-4 bg overflow-hidden">
-            </section>
+                </section>
+
+                <section className="min-h-screen flex flex-col gap-6 items-center justify-center pt-10">
+                    <LettersPullUp text="Mon Stack"/>
+
+                    <SuperMarquee>
+                        {
+                            skill.map((myStack) => {
+                                return <MyStackCard key={myStack.tech} stack={myStack}/>
+                            })
+                        }
+                    </SuperMarquee>
+                        <a
+                            href="/sdeoinzsixnposdbepsneoyrmreys.pdf"
+                            download={"Edwardo Ignace.pdf"}
+                        >
+                            <SendButton/>
+                        </a>
+                </section>
+
+            
 
             <section
-                className="min-h-screen bg-linear-to-b from-green-500 to-emerald-500 flex items-center justify-center"
+                className="rounded-md min-h-screen flex flex-col gap-6 items-center justify-center"
                 id="contact"
             >
-                <h2 className="text-4xl font-bold text-white">Contact</h2>
-                <MyStackCard stack={
-                    
-                {
-                    tech: "Python",
-                    image:"/python.jpg",
-                    niveau:"Intermédaire",
-                    description: "Langage polyvalent (interpreté) utilisé pour le backend, l’automatisation et le traitement de données, apprécié pour sa lisibilité et son écosystème riche."
-                }
-                }/>
+                    <LettersPullUp text="Contact"/>
+                <Card className="z-40 w-70 sm:w-100 p-2 backdrop-blur-2xl bg-linear-to-br from-chart-1/10 via-chart-2/10 to-chart-3/10">
+                    <ContactMe/>
+                </Card>
+
             </section>
+            <DropdownMenuSeparator/>
+            <p className={`px-4 text-xs text-center ${writer.className}`}>© 2025 propulsé par Edwardo Ignace.</p>
         </div>
     );
 }
