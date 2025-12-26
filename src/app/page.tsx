@@ -22,6 +22,10 @@ const notoSans = localFont({
   src:"./font/normi/NotoSansSymbols-Regular.ttf",
   weight:"400 500 600 700 800 900",
 })
+const writer = localFont({
+  src:"./font/normi/PlaywriteIN-VariableFont_wght.ttf",
+  weight:"400 500 600 700 800 900",
+})
 
 export default function MyHome() { 
   return (
@@ -38,5 +42,6 @@ export {
   mountainsOfChristmas,
   inter,
   crazy,
-  notoSans
+  notoSans,
+  writer
 }
