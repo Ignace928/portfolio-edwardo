@@ -21,6 +21,8 @@ import { LettersPullUp } from "./LetterPullup";
 import { ContactMe } from "./ContactMe";
 import { SendButton } from "./SendMotion";
 import { DropdownMenuSeparator } from "../ui/dropdown-menu";
+import { Button } from "../ui/button";
+import Link from "next/link";
 
 export default function ContainerClient() {
     const scrollRef = useRef<HTMLDivElement>(null);
@@ -97,13 +99,13 @@ export default function ContainerClient() {
                                         >
 
                                             <Card className="bg-card/50 mx-6 border border-b-chart-1 border-l-chart-2 border-t-chart-3 border-r-chart-4">
-                                                        <CardTitle className="mx-6 text-center flex gap-4">
-                                                            <CalendarDaysIcon/>
-                                                            <h2> {f.date} </h2>
-                                                        </CardTitle>
-                                                        <CardContent>
-                                                            {f.details}
-                                                        </CardContent>
+                                                <CardTitle className="mx-6 text-center flex gap-4">
+                                                    <CalendarDaysIcon/>
+                                                    <h2> {f.date} </h2>
+                                                </CardTitle>
+                                                <CardContent>
+                                                    {f.details}
+                                                </CardContent>
                                             </Card>
                                         </motion.div>                            
                             </AnimatePresence>
@@ -130,26 +132,43 @@ export default function ContainerClient() {
                         images={project.images}
                         />
                     ))}
+                    <Card className="p-1 hover:bg-primary transition-colors duration-100">
+
+                        <ProjectCard
+                            title="My ref"
+                            detail="Simple projet personnelle (En cours ...🚩)"
+                            images={["/ref_inscription.png", "/ref-playground.png", "/ref-todo.png","/ref_map.png"]}
+                        />
+                        <Button asChild>
+                            <a
+                                href="https://my-ref.vercel.app/login"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                Explorer
+                            </a>
+                        </Button>
+                    </Card>
                 </div>
-                </section>
+            </section>
 
-                <section className="min-h-screen flex flex-col gap-6 items-center justify-center pt-10">
-                    <LettersPullUp text="Mon Stack"/>
+            <section className="min-h-screen flex flex-col gap-6 items-center justify-center pt-10">
+                <LettersPullUp text="Mon Stack"/>
 
-                    <SuperMarquee>
-                        {
-                            skill.map((myStack) => {
-                                return <MyStackCard key={myStack.tech} stack={myStack}/>
-                            })
-                        }
-                    </SuperMarquee>
-                        <a
-                            href="/IgnaceCV.pdf"
-                            download={"Edwardo Ignace.pdf"}
-                        >
-                            <SendButton/>
-                        </a>
-                </section>
+                <SuperMarquee>
+                    {
+                        skill.map((myStack) => {
+                            return <MyStackCard key={myStack.tech} stack={myStack}/>
+                        })
+                    }
+                </SuperMarquee>
+                    <a
+                        href="/IgnaceCV.pdf"
+                        download={"Edwardo Ignace.pdf"}
+                    >
+                        <SendButton/>
+                    </a>
+            </section>
 
             
 
