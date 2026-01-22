@@ -144,7 +144,7 @@ export default function ContainerClient() {
                         }
                     </SuperMarquee>
                         <a
-                            href="/sdeoinzsixnposdbepsneoyrmreys.pdf"
+                            href="/IgnaceCV.pdf"
                             download={"Edwardo Ignace.pdf"}
                         >
                             <SendButton/>
