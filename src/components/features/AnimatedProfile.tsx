@@ -27,7 +27,7 @@ export default function AnimatedProfile({scrollContainer}: AnimatedProfileProps)
             <motion.div style={{ scale }}>
                     <div 
                         className="rounded-full h-32 w-32 xs:h-30 xs:w-30 md:h-45 md:w-45 bg-cover bg-center border-2 border-t-0 border-primary shrink-0"
-                        style={{ backgroundImage: "url(/ssdfh65984324sqsdfizdopi)9556.jpg)" }}
+                        style={{ backgroundImage: "url(/ssdfh65984324sqsdfizdopi9556.jpg)" }}
                     />
             </motion.div>
                     
