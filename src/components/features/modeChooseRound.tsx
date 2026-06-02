@@ -6,9 +6,18 @@ import { Moon, Sun, SunMoon } from "lucide-react";
 
 import { Button, buttonVariants } from "../ui/button";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger } from "../ui/dropdown-menu";
+import { motion } from "framer-motion";
+import { SmoothCard } from "./MotionCard";
 
 //type Mode = "light" | "dark" | "system";
 
+const enfant = {
+    hidden: { scale:0, y: 1 },
+    visible: {
+       scale:1, y: 0, 
+       transition: { staggerChildren: 0}
+    }
+}
 export default function ModeRoundedSwitcher() {
   const { mode, setMode, applyTheme } = useThemeStore();
   const [systemMode, setSystemMode] = useState<"light" | "dark">("light");
@@ -40,23 +49,36 @@ export default function ModeRoundedSwitcher() {
       
           </DropdownMenuTrigger>
           <DropdownMenuContent>
+          <SmoothCard staggerChildren={0.1} delay={0.1} style="items-center justify-center flex flex-col">
 
-            <DropdownMenuGroup className="flex flex-col items-center gap-1">
 
-              <DropdownMenuItem className={buttonVariants({variant:"outline", class:"cursor-pointer rounded-full w-10 h-10 animate-accordion-down"})} onClick={() => setMode("light")}>
+              <DropdownMenuGroup className="flex flex-col items-center gap-1">
+
+                <motion.div variants={enfant}>
+                  <DropdownMenuItem className={buttonVariants({variant:"outline", class:"cursor-pointer rounded-full w-10 h-10 animate-accordion-down"})} onClick={() => setMode("light")}>
+                      <Sun/>
+                  </DropdownMenuItem>
+                </motion.div>
+
+                <motion.div variants={enfant}>  
+                  <DropdownMenuItem className={buttonVariants({variant:"outline", class:"cursor-pointer rounded-full w-10 h-10 animate-accordion-down"})} onClick={() => setMode("dark")}>
+                    <Moon/>
+                  </DropdownMenuItem>
+                </motion.div>
+
+              </DropdownMenuGroup>
+              <DropdownMenuSeparator />
+
+              <motion.div className="" variants={enfant}>
+                <DropdownMenuItem className={buttonVariants({variant:"outline", class:"cursor-pointer"})} onClick={() => setMode("system")}>
+                    Système
+                </DropdownMenuItem>
+              </motion.div>
                 
-                <Sun/>
-              </DropdownMenuItem>
-              <DropdownMenuItem className={buttonVariants({variant:"outline", class:"cursor-pointer rounded-full w-10 h-10 animate-accordion-down"})} onClick={() => setMode("dark")}>
-                <Moon/>
-              </DropdownMenuItem>
-            <DropdownMenuItem className={buttonVariants({variant:"outline", class:"cursor-pointer"})} onClick={() => setMode("system")}>
-                Système
-              </DropdownMenuItem>
-              
-              
-            </DropdownMenuGroup>
-            <DropdownMenuSeparator />
+                
+
+
+          </SmoothCard>
           </DropdownMenuContent>
         </DropdownMenu>
   );

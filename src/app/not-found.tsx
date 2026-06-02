@@ -5,7 +5,7 @@ import { Card, CardContent, CardDescription, CardTitle } from "@/components/ui/c
 import { crazy } from "./page"
 import Link from "next/link"
 import { buttonVariants } from "@/components/ui/button"
-import { ArrowUpRightFromSquareIcon, Home } from "lucide-react"
+import { ArrowUpRightFromSquareIcon } from "lucide-react"
 
 export default function PagaNotFund(){
     return(

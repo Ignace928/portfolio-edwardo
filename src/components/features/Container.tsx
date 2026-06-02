@@ -14,21 +14,19 @@ import { skill } from "@/lib/me";
 import { SuperMarquee } from "./CoolMarquee";
 import { ProjectCard } from "./ProjectCard";
 import { GradualSpacing } from "./GradualSpacing";
-import { notoSans, writer } from "@/app/page";
-import { TypingNoStep } from "./Typing";
+import { writer } from "@/app/page";
 import { CalendarDaysIcon } from "lucide-react";
 import { LettersPullUp } from "./LetterPullup";
 import { ContactMe } from "./ContactMe";
 import { SendButton } from "./SendMotion";
 import { DropdownMenuSeparator } from "../ui/dropdown-menu";
 import { Button } from "../ui/button";
-import Link from "next/link";
 
 export default function ContainerClient() {
     const scrollRef = useRef<HTMLDivElement>(null);
 
     const { scrollYProgress } = useScroll({ container: scrollRef });
-    const opacity = useTransform(scrollYProgress, [0, 0.1], [7, 0]);
+    const opacity = useTransform(scrollYProgress, [0, 0.1], [1, 0]);
     const scrollToSection = (id:string) => {
         const element = document.getElementById(id)
         element?.scrollIntoView({behavior:"smooth"})
@@ -37,15 +35,6 @@ export default function ContainerClient() {
         <div ref={scrollRef} className="h-screen overflow-y-auto mx-4 scrollbar-hide">
 
             <AnimatedProfile scrollContainer={scrollRef} />
-
-            <div className="sticky top-2 z-20 px-4 m-2">
-                <Card className="backdrop-blur-xl bg-card/50 p-4 flex flex-row justify-between">
-                    <ThemeSwitcher />
-                    <SectionTracker sections={sectionList} click={scrollToSection} />
-                    <ModeRoundedSwitcher />
-                </Card>
-            </div>
-
             <motion.section 
                 style={{opacity}} 
                 className="border backdrop-blur-xl rounded-md m-2 sm:m-6 items-center text-center sticky top-0"
@@ -55,14 +44,11 @@ export default function ContainerClient() {
                     <div className='w-2 h-2 rounded-full bg-primary relative mt-3 mr-2'></div>
                 </div>
 
-                <div className="flex h-auto items-center flex-col gap-10">
+                <div className="flex h-auto px-6 items-center flex-col gap-10">
                     <h1><GradualSpacing text="Développeur fullstack"/></h1>
-                        <TypingNoStep
-                            styling={`${notoSans.className} w-1/2 text-center`}
-                            startAt={2500}
-                            speed={60}
-                            message="Orienté en ingénierie logicielle, je conçois et implémente des solutions en appliquant les bonnes pratiques de conception. De l&apos;annalyse des besoins à la mise en production"
-                        />
+                    <p>
+                        Orienté en ingénierie logicielle, je conçois et implémente des solutions en appliquant les bonnes pratiques de conception. De l&apos;annalyse des besoins à la mise en production
+                    </p>
                 </div>
 
                 <div className="flex justify-between">
@@ -70,6 +56,16 @@ export default function ContainerClient() {
                     <div className='w-2 h-2 rounded-full bg-primary relative mb-4 mr-2'></div>
                 </div>
             </motion.section>
+
+            <div className="sticky top-2 z-20 px-0 my-2">
+                <Card className="backdrop-blur-xl bg-card/50 p-4 flex flex-row justify-between">
+                    <ThemeSwitcher />
+                    <SectionTracker sections={sectionList} click={scrollToSection} />
+                    <ModeRoundedSwitcher />
+                </Card>
+            </div>
+
+            
             
 
             
@@ -81,8 +77,8 @@ export default function ContainerClient() {
                 className="min-h-screen mx-auto bg-card/0 border-0 flex items-center justify-center flex-col"
                 id="parcours"
             >
-                <CardTitle className="sticky top-21 bg-card py-2 w-full h-auto z-3">
-                    <LettersPullUp text="Formations & diplôme"/>
+                <CardTitle className="sticky top-21 bg-card py-2 px-6 w-full h-auto z-3">
+                    <LettersPullUp text="Formations & diplômes"/>
                 </CardTitle>
                 
                 {
@@ -90,11 +86,11 @@ export default function ContainerClient() {
                         return(
                             <AnimatePresence key={f.date}>
                                         <motion.div
-                                            initial={{ opacity: 0, y: 50 }}
+                                            initial={{ opacity: 0, y: 10 }}
                                             whileInView={{opacity:1, y:0}}
                                             transition={{
-                                                duration: 0.8,
-                                                delay:0.5
+                                                duration: 0.2,
+                                                delay:0.1
                                             }}
                                         >
 
@@ -153,7 +149,9 @@ export default function ContainerClient() {
             </section>
 
             <section className="min-h-screen flex flex-col gap-6 items-center justify-center pt-10">
-                <LettersPullUp text="Mon Stack"/>
+                <CardTitle className="sticky top-21 bg-card py-2 px-6 w-full h-auto z-3">
+                    <LettersPullUp text="Mon Stack"/>
+                </CardTitle>
 
                 <SuperMarquee>
                     {
@@ -176,14 +174,16 @@ export default function ContainerClient() {
                 className="rounded-md min-h-screen flex flex-col gap-6 items-center justify-center"
                 id="contact"
             >
+                <CardTitle className="bg-card py-2 px-6 w-full h-auto z-3">
                     <LettersPullUp text="Contact"/>
+                </CardTitle>
                 <Card className="z-40 w-70 sm:w-100 p-2 backdrop-blur-2xl bg-linear-to-br from-chart-1/10 via-chart-2/10 to-chart-3/10">
                     <ContactMe/>
                 </Card>
 
             </section>
             <DropdownMenuSeparator/>
-            <p className={`px-4 text-xs text-center ${writer.className}`}>© 2025 propulsé par Edwardo Ignace.</p>
+            <p className={`px-10 mx-10 text-xs text-center ${writer.className}`}>© 2026 by Edwardo Ignace.</p>
         </div>
     );
 }

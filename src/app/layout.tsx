@@ -22,7 +22,8 @@ export const normal = localFont({
 
 export const metadata: Metadata = {
   title: "Portfolio | Edwardo",
-  description: "This is a few description about me",
+  description: "Portfolio d'un développeur malagasy",
+  keywords:["portfolio","Edwardo Ignace", "Ignace", "Edwardo", "Développeur", "Malagasy"]
 };
 
 export default function RootLayout({
@@ -31,7 +32,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="fr">
       <body
         className={`${normal.className} antialized`}
       >
