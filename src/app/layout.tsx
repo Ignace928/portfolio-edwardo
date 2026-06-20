@@ -20,12 +20,28 @@ export const normal = localFont({
   weight:"400 500 600 700 800 900"
 })
 
-export const metadata: Metadata = {
-  title: "Portfolio | Edwardo",
-  description: "Portfolio d'un développeur malagasy",
-  keywords:["portfolio","Edwardo Ignace", "Ignace", "Edwardo", "Développeur", "Malagasy"]
+export const metadata:Metadata={
+  openGraph:{
+    title: "Portfolio | Edwardo",
+    description:"Contacter un ingénieur Developpeur fullStakc JS malagasy",
+    siteName:"https://edwardo-portfolio.netlify.app",
+    locale:"",
+    type:"profile",
+  },
+  keywords:["portfolio","Edwardo Ignace", "Ignace", "Edwardo", "Développeur", "Malagasy"],
+  robots:{
+    index:true,
+    follow:true,
+    nocache:false,
+    googleBot:{
+      index:true,
+      follow:true,
+      "max-snippet":-1,
+      // "max-image-preview":"large",
+      // "max-video-preview":-1
+    }
+  }
 };
-
 export default function RootLayout({
   children,
 }: Readonly<{

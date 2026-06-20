@@ -21,12 +21,13 @@ import { ContactMe } from "./ContactMe";
 import { SendButton } from "./SendMotion";
 import { DropdownMenuSeparator } from "../ui/dropdown-menu";
 import { Button } from "../ui/button";
+import { TypingNoStep, TypingStep } from "./Typing";
 
 export default function ContainerClient() {
     const scrollRef = useRef<HTMLDivElement>(null);
 
     const { scrollYProgress } = useScroll({ container: scrollRef });
-    const opacity = useTransform(scrollYProgress, [0, 0.1], [1, 0]);
+    const opacity = useTransform(scrollYProgress, [0, 1], [1, 0]);
     const scrollToSection = (id:string) => {
         const element = document.getElementById(id)
         element?.scrollIntoView({behavior:"smooth"})
@@ -37,7 +38,7 @@ export default function ContainerClient() {
             <AnimatedProfile scrollContainer={scrollRef} />
             <motion.section 
                 style={{opacity}} 
-                className="border backdrop-blur-xl rounded-md m-2 sm:m-6 items-center text-center sticky top-0"
+                className="border backdrop-blur-xl rounded-md m-2 sm:m-6 items-center text-center z-10"
             >
                 <div className="flex justify-between">
                     <div className='w-2 h-2 rounded-full bg-primary relative mt-3 ml-2'></div>
@@ -46,9 +47,13 @@ export default function ContainerClient() {
 
                 <div className="flex h-auto px-6 items-center flex-col gap-10">
                     <h1><GradualSpacing text="Développeur fullstack"/></h1>
-                    <p>
-                        Orienté en ingénierie logicielle, je conçois et implémente des solutions en appliquant les bonnes pratiques de conception. De l&apos;annalyse des besoins à la mise en production
-                    </p>
+                    <TypingNoStep
+                        startAt={100}
+                        speed={50}
+                        styling=""
+                        message="Orienté en ingénierie logicielle, je conçois et implémente des solutions en appliquant les bonnes pratiques de conception. De l&apos;annalyse des besoins à la mise en production"
+                    />
+                                        
                 </div>
 
                 <div className="flex justify-between">
@@ -170,18 +175,23 @@ export default function ContainerClient() {
 
             
 
-            <section
+            <motion.section
+                initial={{opacity:0}}
+                whileInView={{
+                    opacity:[0,1],
+                    transition:{duration:0.5}
+                }}
                 className="rounded-md min-h-screen flex flex-col gap-6 items-center justify-center"
                 id="contact"
             >
                 <CardTitle className="bg-card py-2 px-6 w-full h-auto z-3">
                     <LettersPullUp text="Contact"/>
                 </CardTitle>
-                <Card className="z-40 w-70 sm:w-100 p-2 backdrop-blur-2xl bg-linear-to-br from-chart-1/10 via-chart-2/10 to-chart-3/10">
+                <Card className="z-40 w-70 sm:w-100 p-2 backdrop-blur-2xl ">
                     <ContactMe/>
                 </Card>
 
-            </section>
+            </motion.section>
             <DropdownMenuSeparator/>
             <p className={`px-10 mx-10 text-xs text-center ${writer.className}`}>© 2026 by Edwardo Ignace.</p>
         </div>

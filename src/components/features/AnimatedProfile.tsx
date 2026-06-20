@@ -11,8 +11,8 @@ export default function AnimatedProfile({scrollContainer}: AnimatedProfileProps)
     const { scrollYProgress } = useScroll({ container: scrollContainer });
     
     // Disparition et réduction de taille au scroll
-    const opacity = useTransform(scrollYProgress, [0, 0.1], [1, 0]);
-    const scale = useTransform(scrollYProgress, [0, 0.3], [1, 0]);
+    const opacity = useTransform(scrollYProgress, [0, 0.05], [1, 0]);
+    const scale = useTransform(scrollYProgress, [0, 1], [1, 0]);
     
     // Réduction de la hauteur de la carte
     const top = useTransform(scrollYProgress, [0, 0.3], [0, -300]);

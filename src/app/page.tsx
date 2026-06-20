@@ -27,27 +27,7 @@ const writer = localFont({
   src:"./font/normi/PlaywriteIN-VariableFont_wght.ttf",
   weight:"400 500 600 700 800 900",
 })
-export const metadata:Metadata={
-  openGraph:{
-    title:"Ingénieur Developpeur fullstack malagasy",
-    description:"Contacter un ingénieur Developpeur fullStakc JS malagasy",
-    siteName:"https://edwardo-portfolio.netlify.app",
-    locale:"",
-    type:"profile",
-  },
-  robots:{
-    index:true,
-    follow:true,
-    nocache:false,
-    googleBot:{
-      index:true,
-      follow:true,
-      "max-snippet":-1,
-      // "max-image-preview":"large",
-      // "max-video-preview":-1
-    }
-  }
-};
+
 
 export default function MyHome() { 
   return (
