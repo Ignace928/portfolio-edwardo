@@ -3,7 +3,6 @@
 import localFont from "next/font/local";
 import ContainerClient from "@/components/features/Container";
 import SnowParticles from "@/components/features/ParticleContainer";
-import { Metadata } from "next";
 
 const mountainsOfChristmas = localFont({
   src:"./font/moutnain_of_christmas/MountainsofChristmas-Regular.ttf",

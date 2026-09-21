@@ -124,7 +124,7 @@ export default function ContainerClient() {
                     <LettersPullUp text="Expériences "/>
                 </CardTitle>
                 
-                <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-1 gap-6">
                     {projets.map((project, index) => (
                         <ProjectCard
                         key={index}

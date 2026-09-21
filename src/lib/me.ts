@@ -114,6 +114,17 @@ const projets = [
         ]
     },
     {
+        title:"Application desktop (remake du SIS LBE)",
+        detail:"Remake du gestion des inscriptions en Application desktop avec Nextron (electron + Nextjs) avec un système de gestion de bases de données sqlite, RBAC et une interface moderne et intuitive",
+        images:[
+            "/page_classe.png",
+            "/accueil.png",
+            "/rbac.png",
+            "/sgbd_lbe.png",
+            "/login_lbe.png",
+        ]
+    },
+    {
         title:"Plateforme BI",
         detail:"Conception et réalisation d'une architecture microservice de plateforme de données et un outil BI",
         images:[

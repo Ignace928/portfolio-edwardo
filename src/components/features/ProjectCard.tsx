@@ -35,7 +35,7 @@ export function ProjectCard({
   footer,
 }: ProjectCardProps) {
   return (
-    <Card className="w-full max-w-[300px] md:max-w-[400px] lg:max-w-[500px] flex flex-col overflow-hidden">
+    <Card className="w-full max-w-[300px] md:max-w-[400px] lg:max-w-[800px] flex flex-col overflow-hidden bg-lime-500/5 backdrop-blur-2xl p-4">
         {/* Carousel */}
         <Carousel className="w-full">
             <CarouselContent>
