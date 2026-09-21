@@ -6,25 +6,25 @@ type AnimatedProfileProps = {
 };
 
 export default function AnimatedProfile({ scrollContainer }: AnimatedProfileProps) {
-  const { scrollYProgress } = useScroll({
-    container: scrollContainer,
-  });
+  const { scrollY } = useScroll({
+  container: scrollContainer,
+});
 
 const opacity = useTransform(
-  scrollYProgress,
-  [0, 0.1],
+  scrollY,
+  [0, 120],
   [1, 0],
 );
 
 const scale = useTransform(
-  scrollYProgress,
-  [0, 0.1],
+  scrollY,
+  [0, 120],
   [1, 0],
 );
 
 const top = useTransform(
-  scrollYProgress,
-  [0, 0.1],
+  scrollY,
+  [0, 120],
   [0, -100],
 );
 
